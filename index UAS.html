@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Biodata — Aurelia Melinda Leasiwal</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #0f1117;
+      --surface: #181c27;
+      --surface2: #1f2433;
+      --border: rgba(255,255,255,0.08);
+      --text: #f0f2f8;
+      --muted: #8a90a4;
+      --accent: #7c9eff;
+      --accent2: #a78bfa;
+      --green: #4ade80;
+      --radius: 14px;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', sans-serif;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      padding: 2rem 1rem 4rem;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 480px;
+    }
+
+    /* Hero */
+    .hero {
+      text-align: center;
+      padding: 2.5rem 1.5rem 2rem;
+      position: relative;
+    }
+    .avatar {
+      width: 88px;
+      height: 88px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #7c9eff, #a78bfa);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Playfair Display', serif;
+      font-size: 28px;
+      color: #fff;
+      margin: 0 auto 1.25rem;
+      position: relative;
+    }
+    .avatar::after {
+      content: '';
+      position: absolute;
+      inset: -3px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #7c9eff44, #a78bfa44);
+      z-index: -1;
+    }
+    .hero-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.6rem;
+      color: var(--text);
+      margin-bottom: 0.4rem;
+      line-height: 1.2;
+    }
+    .hero-sub {
+      font-size: 0.82rem;
+      color: var(--muted);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+    }
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      font-size: 0.75rem;
+      padding: 4px 12px;
+      border-radius: 20px;
+      background: rgba(74,222,128,0.12);
+      color: var(--green);
+      border: 1px solid rgba(74,222,128,0.25);
+      font-weight: 500;
+    }
+    .badge::before { content: '●'; font-size: 8px; }
+
+    /* Tagline */
+    .tagline {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1rem 1.25rem;
+      margin-bottom: 1.25rem;
+      font-size: 0.88rem;
+      color: var(--muted);
+      line-height: 1.7;
+      text-align: center;
+    }
+
+    /* Cards */
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      margin-bottom: 1.25rem;
+      overflow: hidden;
+    }
+    .card-header {
+      padding: 0.75rem 1.25rem;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .card-header-icon {
+      width: 28px;
+      height: 28px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+    }
+    .card-header-icon.blue { background: rgba(124,158,255,0.15); }
+    .card-header-icon.purple { background: rgba(167,139,250,0.15); }
+    .card-header-icon.green { background: rgba(74,222,128,0.12); }
+    .card-header-icon.pink { background: rgba(251,113,133,0.12); }
+    .card-header-icon.orange { background: rgba(251,191,36,0.12); }
+
+    .card-title {
+      font-size: 0.8rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      color: var(--muted);
+    }
+    .card-body { padding: 0.25rem 0; }
+
+    .row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 0.75rem 1.25rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .row:last-child { border-bottom: none; }
+    .row-icon { width: 18px; text-align: center; font-size: 15px; color: var(--muted); flex-shrink: 0; }
+    .row-label { font-size: 0.8rem; color: var(--muted); width: 72px; flex-shrink: 0; }
+    .row-val { font-size: 0.875rem; color: var(--text); font-weight: 500; }
+    .row-val.accent { color: var(--accent); }
+
+    /* Education timeline */
+    .edu-list { padding: 0.5rem 1.25rem 0.75rem; }
+    .edu-item {
+      display: flex;
+      gap: 14px;
+      padding: 0.6rem 0;
+      position: relative;
+    }
+    .edu-item:not(:last-child)::after {
+      content: '';
+      position: absolute;
+      left: 6px;
+      top: 28px;
+      bottom: -10px;
+      width: 1px;
+      background: var(--border);
+    }
+    .edu-dot {
+      width: 13px;
+      height: 13px;
+      border-radius: 50%;
+      border: 2px solid var(--muted);
+      background: var(--surface);
+      flex-shrink: 0;
+      margin-top: 3px;
+    }
+    .edu-dot.active {
+      border-color: var(--green);
+      background: rgba(74,222,128,0.15);
+    }
+    .edu-name { font-size: 0.875rem; font-weight: 500; color: var(--text); }
+    .edu-level { font-size: 0.75rem; color: var(--muted); margin-top: 1px; }
+    .edu-level.active { color: var(--green); }
+
+    /* Hobbies */
+    .hobby-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      padding: 1rem 1.25rem;
+    }
+    .hobby-card {
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 0.9rem 1rem;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 0.875rem;
+      font-weight: 500;
+    }
+    .hobby-icon { font-size: 1.4rem; }
+
+    /* Contact */
+    .contact-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 0.9rem 1.25rem;
+      border-bottom: 1px solid var(--border);
+      text-decoration: none;
+      transition: background 0.15s;
+    }
+    .contact-row:last-child { border-bottom: none; }
+    .contact-row:hover { background: var(--surface2); }
+    .contact-icon {
+      width: 36px;
+      height: 36px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      flex-shrink: 0;
+    }
+    .contact-icon.ig { background: rgba(251,113,133,0.12); }
+    .contact-label { font-size: 0.75rem; color: var(--muted); }
+    .contact-val { font-size: 0.875rem; font-weight: 500; color: var(--accent); }
+    .contact-arrow { margin-left: auto; font-size: 16px; color: var(--muted); }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      font-size: 0.75rem;
+      color: var(--muted);
+      padding-top: 1.5rem;
+    }
+    footer span { color: var(--accent2); }
+
+    @media (prefers-reduced-motion: no-preference) {
+      .card { transition: border-color 0.2s; }
+      .card:hover { border-color: rgba(255,255,255,0.14); }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+
+    <!-- Hero -->
+    <div class="hero">
+      <div class="avatar">AM</div>
+      <h1 class="hero-name">Aurelia Melinda Leasiwal</h1>
+      <p class="hero-sub">Ilmu Komputer · Universitas Pattimura</p>
+      <span class="badge">Aktif sebagai mahasiswa</span>
+    </div>
+
+    <!-- Tentang -->
+    <p class="tagline">
+      Saya adalah mahasiswa Universitas Pattimura, Fakultas Sains dan Teknologi, Jurusan Matematika, Prodi Ilmu Komputer.
+    </p>
+
+    <!-- Data Diri -->
+    <div class="card">
+      <div class="card-header">
+        <div class="card-header-icon blue">👤</div>
+        <span class="card-title">Data Diri</span>
+      </div>
+      <div class="card-body">
+        <div class="row">
+          <span class="row-icon">✦</span>
+          <span class="row-label">Nama</span>
+          <span class="row-val">Aurelia Melinda Leasiwal</span>
+        </div>
+        <div class="row">
+          <span class="row-icon">◎</span>
+          <span class="row-label">Umur</span>
+          <span class="row-val">19 Tahun</span>
+        </div>
+        <div class="row">
+          <span class="row-icon">◈</span>
+          <span class="row-label">Status</span>
+          <span class="row-val">Mahasiswa</span>
+        </div>
+        <div class="row">
+          <span class="row-icon">⌖</span>
+          <span class="row-label">Alamat</span>
+          <span class="row-val">Hative Kecil</span>
+        </div>
+        <div class="row">
+          <span class="row-icon">✉</span>
+          <span class="row-label">Email</span>
+          <span class="row-val accent">leasiwalmelinda@gmail.com</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Pendidikan -->
+    <div class="card">
+      <div class="card-header">
+        <div class="card-header-icon purple">🎓</div>
+        <span class="card-title">Pendidikan</span>
+      </div>
+      <div class="edu-list">
+        <div class="edu-item">
+          <div class="edu-dot"></div>
+          <div>
+            <div class="edu-name">SD Negeri 1 Galala</div>
+            <div class="edu-level">Sekolah Dasar</div>
+          </div>
+        </div>
+        <div class="edu-item">
+          <div class="edu-dot"></div>
+          <div>
+            <div class="edu-name">SMP Negeri 3 Ambon</div>
+            <div class="edu-level">Sekolah Menengah Pertama</div>
+          </div>
+        </div>
+        <div class="edu-item">
+          <div class="edu-dot"></div>
+          <div>
+            <div class="edu-name">SMA 4 Ambon</div>
+            <div class="edu-level">Sekolah Menengah Atas</div>
+          </div>
+        </div>
+        <div class="edu-item">
+          <div class="edu-dot active"></div>
+          <div>
+            <div class="edu-name">Universitas Pattimura</div>
+            <div class="edu-level active">Sedang berjalan · Prodi Ilmu Komputer</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Hobi -->
+    <div class="card">
+      <div class="card-header">
+        <div class="card-header-icon pink">♡</div>
+        <span class="card-title">Hobi</span>
+      </div>
+      <div class="hobby-grid">
+        <div class="hobby-card">
+          <span class="hobby-icon">🍳</span>
+          <span>Memasak</span>
+        </div>
+        <div class="hobby-card">
+          <span class="hobby-icon">🏸</span>
+          <span>Badminton</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Kontak -->
+    <div class="card">
+      <div class="card-header">
+        <div class="card-header-icon orange">◎</div>
+        <span class="card-title">Kontak</span>
+      </div>
+      <a class="contact-row" href="https://instagram.com/aurelia.leasiwal_" target="_blank" rel="noopener">
+        <div class="contact-icon ig">📷</div>
+        <div>
+          <div class="contact-label">Instagram</div>
+          <div class="contact-val">@aurelia.leasiwal_</div>
+        </div>
+        <span class="contact-arrow">↗</span>
+      </a>
+      <a class="contact-row" href="mailto:leasiwalmelinda@gmail.com">
+        <div class="contact-icon ig" style="background:rgba(124,158,255,0.12)">✉</div>
+        <div>
+          <div class="contact-label">Email</div>
+          <div class="contact-val">leasiwalmelinda@gmail.com</div>
+        </div>
+        <span class="contact-arrow">↗</span>
+      </a>
+    </div>
+
+    <footer>
+      Dibuat dengan <span>♥</span> · Aurelia Melinda Leasiwal · 2026
+    </footer>
+
+  </div>
+</body>
+</html>
